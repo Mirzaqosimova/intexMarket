@@ -1,14 +1,10 @@
 package com.example.index_market.dto.product;
 
 import com.example.index_market.dto.GenericDto;
-import com.example.index_market.entity.product.Category;
-import com.example.index_market.entity.product.Frame;
-import com.example.index_market.enums.product.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
