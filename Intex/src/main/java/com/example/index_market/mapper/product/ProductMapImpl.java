@@ -5,9 +5,10 @@ import com.example.index_market.dto.product.ProductDto;
 import com.example.index_market.dto.product.ProductUpdateDto;
 import com.example.index_market.entity.product.Product;
 import com.example.index_market.mapper.BaseMapper;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
+@Component
 public class ProductMapImpl implements   BaseMapper<Product,
         ProductDto,
         ProductCreateDto,
@@ -16,7 +17,6 @@ public class ProductMapImpl implements   BaseMapper<Product,
     public ProductDto toDto(Product product) {
         ProductDto productDto = new ProductDto();
         productDto.setId(product.getId());
-
         return productDto;
     }
 
