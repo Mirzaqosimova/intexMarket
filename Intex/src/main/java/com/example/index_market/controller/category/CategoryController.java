@@ -16,7 +16,7 @@ public class CategoryController extends AbstractController<CategoryServiceImpl> 
         super(service);
     }
 
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<?> getAllCategory() {
         ApiResponse response = service.getAll();
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);

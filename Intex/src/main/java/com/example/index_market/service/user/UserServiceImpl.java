@@ -4,7 +4,9 @@ import com.example.index_market.dto.user.AuthUserCreateDto;
 import com.example.index_market.dto.user.AuthUserDto;
 import com.example.index_market.dto.user.AuthUserUpdateDto;
 import com.example.index_market.dto.user.SingInDto;
+import com.example.index_market.entity.Auditable;
 import com.example.index_market.entity.auth.AuthUser;
+import com.example.index_market.enums.user.Role;
 import com.example.index_market.mapper.user.AuthUserMapImpl;
 import com.example.index_market.repository.user.UserRepository;
 import com.example.index_market.response.ApiResponse;
@@ -85,5 +87,11 @@ public class UserServiceImpl extends AbstractService<UserRepository, AuthUserMap
         AuthUser user = optional.get();
         return new ApiResponse(true, user);
     }
+
+    public String getAdminId(){
+        Optional<AuthUser> admin = repository.findByRole(Role.ADMIN);
+        return admin.map(Auditable::getId).orElse(null);
+    }
+
 
 }

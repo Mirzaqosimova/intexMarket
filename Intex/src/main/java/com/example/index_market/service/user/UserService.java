@@ -7,10 +7,6 @@ import com.example.index_market.entity.auth.AuthUser;
 import com.example.index_market.service.BaseService;
 import com.example.index_market.service.GenericCrudService;
 
-public interface UserService extends GenericCrudService<
-        AuthUser,
-        AuthUserDto,
-        AuthUserCreateDto,
-        AuthUserUpdateDto,
-        String>, BaseService {
+public interface UserService extends
+        GenericCrudService<AuthUser, AuthUserDto, AuthUserCreateDto, AuthUserUpdateDto,String>, BaseService {
 }
