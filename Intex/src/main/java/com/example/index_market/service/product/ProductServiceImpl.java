@@ -2,13 +2,20 @@ package com.example.index_market.service.product;
 
 import com.example.index_market.dto.product.ProductCreateDto;
 import com.example.index_market.dto.product.ProductUpdateDto;
+import com.example.index_market.entity.product.Category;
+import com.example.index_market.entity.product.Detail;
 import com.example.index_market.entity.product.Product;
+import com.example.index_market.enums.product.Status;
 import com.example.index_market.mapper.product.ProductMapImpl;
+import com.example.index_market.repository.category.CategoryRepository;
+import com.example.index_market.repository.detail.DetailRepository;
 import com.example.index_market.repository.product.ProductRepository;
 import com.example.index_market.response.ApiResponse;
 import com.example.index_market.service.AbstractService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,32 +23,59 @@ import java.util.Optional;
 @Service
 public class ProductServiceImpl extends AbstractService<ProductRepository, ProductMapImpl> implements ProductService {
 
+    private final CategoryRepository categoryRepo;
 
-    public ProductServiceImpl(ProductRepository repository, ProductMapImpl mapper) {
+    private final DetailRepository detailRepo;
+
+
+    @Autowired
+    public ProductServiceImpl(ProductRepository repository,
+                              ProductMapImpl mapper,
+                              CategoryRepository categoryRepository,
+                              DetailRepository detailRepository) {
         super(repository, mapper);
+        categoryRepo = categoryRepository;
+        detailRepo = detailRepository;
     }
 
     @Override
     public ApiResponse create(ProductCreateDto createDto) {
 
-        return null;
+        Optional<Category> optionalCategory = categoryRepo.findById(createDto.getCategoryId());
+        if (optionalCategory.isEmpty()) {
+            return new ApiResponse(false, "Category not found!");
+        }
+
+        if (Arrays.stream(Status.values()).noneMatch(r -> r.name().equals(createDto.getStatus()))) {
+            return new ApiResponse(false, "Status not found!");
+        }
+        List<Detail> allById = detailRepo.findAllById(createDto.getDetailIdList());
+        Product product = mapper.fromCreateDtoToProduct(createDto, optionalCategory.get(), Status.valueOf(createDto.getStatus()), allById);
+        repository.save(product);
+        return new ApiResponse(true, "Success");
     }
 
     @Override
     public ApiResponse update(ProductUpdateDto updateDto) {
-        return null;
+        Product product = mapper.fromUpdateDto(updateDto);
+        Optional<Product> optionalProduct = repository.findById(product.getId());
+        if (optionalProduct.isEmpty()) {
+            return new ApiResponse(false, "Product not found");
+        }
+        repository.save(product);
+        return new ApiResponse(true, "Success", product);
     }
 
 
     @Override
     public ApiResponse delete(String id) {
-       try{
-           repository.deleteById(id);
-           return new ApiResponse(true, "Success");
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
-           return new ApiResponse(false, "Could not deleted!");
+        try {
+            repository.deleteById(id);
+            return new ApiResponse(true, "Success");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ApiResponse(false, "Could not deleted!");
     }
 
     @Override

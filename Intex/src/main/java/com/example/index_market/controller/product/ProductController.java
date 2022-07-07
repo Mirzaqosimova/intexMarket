@@ -16,7 +16,7 @@ public class ProductController extends AbstractController<ProductServiceImpl> {
     }
 
 
-  @GetMapping
+    @GetMapping
     public ResponseEntity<?> getAllProducts() {
         ApiResponse response = service.getAll();
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
@@ -37,12 +37,14 @@ public class ProductController extends AbstractController<ProductServiceImpl> {
 
     @PostMapping
     public ResponseEntity<?> saveProduct(@RequestBody ProductCreateDto productCreateDto) {
-        return null;
+        ApiResponse response = service.create(productCreateDto);
+        return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateProduct(@RequestBody ProductUpdateDto productUpdateDto) {
-        return null;
+        ApiResponse response = service.update(productUpdateDto);
+        return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
 

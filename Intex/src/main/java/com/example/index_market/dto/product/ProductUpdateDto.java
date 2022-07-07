@@ -19,7 +19,7 @@ public class ProductUpdateDto extends GenericDto {
     private Double height;
     private String frameUz;
     private String frameRu;
-    private Category category;
+    private String categoryId;
     private String status;
     private String imageUrl;
 }

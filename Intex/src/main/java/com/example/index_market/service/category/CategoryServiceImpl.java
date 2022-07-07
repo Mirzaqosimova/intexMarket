@@ -31,11 +31,11 @@ public class CategoryServiceImpl extends AbstractService<CategoryRepository, Cat
 
     @Override
     public ApiResponse update(CategoryUpdateDto updateDto) {
-        Category category = mapper.fromUpdateDto(updateDto);
-        Optional<Category> optionalCategory = repository.findById(category.getId());
+        Optional<Category> optionalCategory = repository.findById(updateDto.getId());
         if (optionalCategory.isEmpty()) {
             return new ApiResponse(false, "Category not found");
         }
+        Category category = mapper.fromUpdateDto(updateDto);
         repository.save(category);
         return new ApiResponse(true, "Success", category);
     }

@@ -31,11 +31,11 @@ public class DetailServiceImpl extends AbstractService<DetailRepository, DetailM
     @Override
     public ApiResponse update(DetailUpdateDto updateDto) {
 
-        Detail detail = mapper.fromUpdateDto(updateDto);
-        Optional<Detail> optionalDetail = repository.findById(detail.getId());
+        Optional<Detail> optionalDetail = repository.findById(updateDto.getId());
         if (optionalDetail.isEmpty()) {
-            return new ApiResponse(false, "Category not found");
+            return new ApiResponse(false, "Detail not found");
         }
+        Detail detail = mapper.fromUpdateDto(updateDto);
         repository.save(detail);
         return new ApiResponse(true, "Success", detail);
     }
