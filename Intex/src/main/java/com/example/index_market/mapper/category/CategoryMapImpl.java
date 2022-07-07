@@ -22,6 +22,11 @@ public class CategoryMapImpl implements BaseMapper<
     }
 
     @Override
+    public Category toClass(CategoryDto categoryDto) {
+        return null;
+    }
+
+    @Override
     public List<CategoryDto> toDto(List<Category> e) {
         return null;
     }

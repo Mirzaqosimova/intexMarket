@@ -16,11 +16,22 @@ public class ProductController extends AbstractController<ProductServiceImpl> {
     }
 
 
-    @GetMapping
-    public ResponseEntity<?> getAllProducts() {
-        ApiResponse response = service.getAll();
+
+    @GetMapping("/forAdmin")
+    public ResponseEntity<?> getAllProductsForAdmin(){
+        ApiResponse response = service.getAllForAdmin();
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
+
+
+
+    @GetMapping("/forUser")
+    public ResponseEntity<?> getAllProductsForUser(){
+        ApiResponse response = service.getAllForUser();
+        return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
+    }
+
+
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getOneProduct(@PathVariable String id) {

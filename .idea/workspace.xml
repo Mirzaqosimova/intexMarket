@@ -5,7 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81731e23-2c31-4f71-9666-eb5b9658a659" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/product/ProductCreateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/product/ProductCreateDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/controller/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/controller/product/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/order/OrderCreateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/order/OrderCreateDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/order/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/order/OrderDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/order/OrderUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/order/OrderUpdateDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/product/ProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/product/ProductDtoAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/product/ProductUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/product/ProductUpdateDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/mapper/category/CategoryMapImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/mapper/category/CategoryMapImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/mapper/detail/DetailMapImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/mapper/detail/DetailMapImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/mapper/product/ProductMapImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/mapper/product/ProductMapImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/service/product/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/service/product/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/service/product/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/service/product/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/detail/DetailDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/detail/DetailDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/frame/FrameCreateDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/frame/FrameDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/frame/FrameUpdateDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/product/ProductCreateDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/product/ProductCreateDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/product/ProductDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/product/ProductDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/product/ProductUpdateDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/product/ProductUpdateDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/auth/AuthUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/auth/AuthUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/order/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/order/Order.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/product/Detail.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/product/Detail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/product/Frame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/product/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/product/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/BaseMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/BaseMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/category/CategoryMapImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/category/CategoryMapImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/detail/DetailMapImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/detail/DetailMapImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/frame/FrameMapImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/product/ProductMapImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/product/ProductMapImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/repository/frame/FrameRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/AbstractService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/AbstractService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/category/CategoryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/category/CategoryServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/detail/DetailServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/detail/DetailServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/frame/FrameService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/frame/FrameServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/product/ProductServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/product/ProductServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +119,7 @@
       <recent name="com.example.index_market.service.category" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.index_market.dto.product" />
       <recent name="com.example.index_market.dto.category" />
       <recent name="com.example.index_market.dto.frame" />
       <recent name="com.example.index_market.dto.detail" />
@@ -108,7 +146,7 @@
       <workItem from="1657099318936" duration="8988000" />
       <workItem from="1657109757028" duration="2573000" />
       <workItem from="1657129785861" duration="100000" />
-      <workItem from="1657167017023" duration="10873000" />
+      <workItem from="1657167017023" duration="22778000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1657176938396</created>
@@ -117,7 +155,21 @@
       <option name="project" value="LOCAL" />
       <updated>1657176938396</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit">
+      <created>1657178179735</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1657178179735</updated>
+    </task>
+    <task id="LOCAL-00003" summary="commit">
+      <created>1657187807723</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1657187807723</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
