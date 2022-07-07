@@ -38,6 +38,7 @@ public class OrderMapImpl implements BaseMapper<Order,
     @Override
     public OrderDto toDto(Order order) {
         if (order != null) return null;
+        assert false;
         return OrderDto.builder()
                 .userName(order.getUser().getName())
                 .userPhone(order.getUser().getPhone())
@@ -80,29 +81,15 @@ public class OrderMapImpl implements BaseMapper<Order,
                                       Product product,
                                       Address address) {
 
-        return new Order(
-                user,
-                product,
-                orderCreateDto.getTime(),
-                orderCreateDto.isArrived(),
-                address
-        );
+        return Order.builder()
+                .address(address)
+                .arrived(false)
+                .time(orderCreateDto.getTime())
+                .product(product)
+                .user(user)
+                .build();
     }
 
-    public Order fromUpdateDtoToOrder(OrderUpdateDto updateDto,
-                                      AuthUser user,
-                                      Product product,
-                                      Address address) {
-
-        Order order = new Order(
-                user,
-                product,
-                updateDto.getTime(),
-                updateDto.isArrived(),
-                address
-        );
-        return order;
-    }
 
 
 }

@@ -5,14 +5,20 @@ import com.example.index_market.dto.product.ProductCreateDto;
 import com.example.index_market.dto.product.ProductUpdateDto;
 import com.example.index_market.response.ApiResponse;
 import com.example.index_market.service.product.ProductServiceImpl;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @RestController
 @RequestMapping("/api/product")
 public class ProductController extends AbstractController<ProductServiceImpl> {
-    public ProductController(ProductServiceImpl service) {
+
+    private final ImageService imageService;
+
+    public ProductController(ProductServiceImpl service, ImageService imageService) {
         super(service);
+        this.imageService = imageService;
     }
 
 
@@ -46,14 +52,30 @@ public class ProductController extends AbstractController<ProductServiceImpl> {
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
-    @PostMapping
-    public ResponseEntity<?> saveProduct(@RequestBody ProductCreateDto productCreateDto) {
+    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+    @ResponseBody
+    public ResponseEntity<?> saveProduct(@RequestPart("image") MultipartHttpServletRequest request, @RequestPart("product") ProductCreateDto productCreateDto) {
+        String url ;
+        try {
+            url = imageService.getFileFromRequest(request);
+        } catch (Exception e) {
+            return ResponseEntity.status(409).body(new ApiResponse(false,"Cannot cast image"));
+        }
+        productCreateDto.setImageUrl(url);
         ApiResponse response = service.create(productCreateDto);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> updateProduct(@RequestBody ProductUpdateDto productUpdateDto) {
+    @PutMapping(path = "/edit",consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+    public ResponseEntity<?> updateProduct(@RequestPart MultipartHttpServletRequest reques,@RequestPart ProductUpdateDto productUpdateDto) {
+
+        String url ;
+        try {
+            url = imageService.getFileFromRequest(reques);
+        } catch (Exception e) {
+          return ResponseEntity.status(409).body(new ApiResponse(false,"Cannot cast image"));
+        }
+        productUpdateDto.setImageUrl(url);
         ApiResponse response = service.update(productUpdateDto);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }

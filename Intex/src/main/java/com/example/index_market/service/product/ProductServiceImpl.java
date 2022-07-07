@@ -109,12 +109,14 @@ public class ProductServiceImpl extends AbstractService<ProductRepository, Produ
     }
 
 
+    @Override
     public ApiResponse getAllForAdmin() {
         List<Product> allProducts = repository.findAll();
         List<ProductDtoAdmin> productDtoList = mapper.toDtoForAdmin(allProducts);
         return new ApiResponse(true, "Success", productDtoList);
     }
 
+    @Override
     public ApiResponse getAllForUser() {
         List<Product> allProducts = repository.findAll();
         List<ProductDtoUser> productDtoList =mapper.toDtoForUser(allProducts);
