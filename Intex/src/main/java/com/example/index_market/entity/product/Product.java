@@ -17,7 +17,7 @@ public class Product extends Auditable {
     private String description;
     private Double disPrice;
     private String size;
-    private Double hieght;
+    private Double height;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Frame frame;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
