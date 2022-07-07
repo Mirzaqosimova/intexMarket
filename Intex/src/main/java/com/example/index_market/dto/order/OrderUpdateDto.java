@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 public class OrderUpdateDto extends GenericDto {
     private AuthUserDto user;
     private ProductDto product;
-    private LocalDateTime time;
     private boolean arrived;
-    private AddressDto address;
+    private String  address_id;
+    private LocalDateTime time;
 }
