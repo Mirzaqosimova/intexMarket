@@ -22,6 +22,11 @@ public class DetailMapImpl implements BaseMapper<
     }
 
     @Override
+    public Detail toClass(DetailDto detailDto) {
+        return null;
+    }
+
+    @Override
     public List<DetailDto> toDto(List<Detail> e) {
         return null;
     }

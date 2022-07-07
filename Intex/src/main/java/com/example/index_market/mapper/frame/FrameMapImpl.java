@@ -21,6 +21,11 @@ public class FrameMapImpl implements BaseMapper<
     }
 
     @Override
+    public Frame toClass(FrameDto frameDto) {
+        return null;
+    }
+
+    @Override
     public List<FrameDto> toDto(List<Frame> e) {
         return null;
     }

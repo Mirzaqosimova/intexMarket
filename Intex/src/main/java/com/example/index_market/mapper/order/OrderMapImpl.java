@@ -9,12 +9,14 @@ import com.example.index_market.mapper.BaseMapper;
 import com.example.index_market.mapper.product.ProductMapImpl;
 import com.example.index_market.mapper.user.AuthUserMapImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
+@Component
 public class OrderMapImpl implements BaseMapper<Order,
         OrderDto,
         OrderCreateDto,

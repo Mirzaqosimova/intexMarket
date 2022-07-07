@@ -13,4 +13,5 @@ import javax.persistence.Entity;
 public class Address extends Auditable {
     private Double lat;
     private Double lang;
+    private String fullAddress;
 }

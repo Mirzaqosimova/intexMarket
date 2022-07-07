@@ -11,11 +11,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class AuthUserMapImpl implements BaseMapper<AuthUser,AuthUserDto, AuthUserCreateDto, AuthUserUpdateDto> {
+public class AuthUserMapImpl implements BaseMapper
+        <AuthUser,
+                AuthUserDto,
+                AuthUserCreateDto,
+                AuthUserUpdateDto> {
 
     @Override
     public AuthUserDto toDto(AuthUser user) {
-        if(user == null){
+        if (user == null) {
             return null;
         }
 
@@ -29,15 +33,15 @@ public class AuthUserMapImpl implements BaseMapper<AuthUser,AuthUserDto, AuthUse
 
     @Override
     public AuthUser toClass(AuthUserDto dto) {
-            if(dto == null)
-                return null;
+        if (dto == null)
+            return null;
 
-            return AuthUser.builder()
-                    .name(dto.getName())
-                    .phone(dto.getPhone())
-                    .password(dto.getPassword())
-                    .role(dto.getRole())
-                    .build();
+        return AuthUser.builder()
+                .name(dto.getName())
+                .phone(dto.getPhone())
+                .password(dto.getPassword())
+                .role(dto.getRole())
+                .build();
     }
 
     @Override
@@ -53,7 +57,7 @@ public class AuthUserMapImpl implements BaseMapper<AuthUser,AuthUserDto, AuthUse
 
     @Override
     public AuthUser fromUpdateDto(AuthUserUpdateDto dto) {
-        AuthUser user= new AuthUser();
+        AuthUser user = new AuthUser();
         user.setName(user.getName() == null ? user.getName() : dto.getName());
         user.setPhone(user.getPhone() == null ? user.getPhone() : dto.getPhone());
         user.setPassword(user.getPassword() == null ? user.getPassword() : dto.getPassword());

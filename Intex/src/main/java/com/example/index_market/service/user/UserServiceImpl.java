@@ -62,7 +62,12 @@ public class UserServiceImpl extends AbstractService<UserRepository, AuthUserMap
 
     @Override
     public ApiResponse delete(String id) {
-        return null;
+        try {
+            repository.deleteById(id);
+            return new ApiResponse(true,"Account not deleted");
+        }catch (Exception e){
+            return new ApiResponse(false,e.getMessage());
+        }
     }
 
     @Override

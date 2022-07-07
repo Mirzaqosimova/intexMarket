@@ -1,6 +1,7 @@
 package com.example.index_market.dto.order;
 
 import com.example.index_market.dto.GenericDto;
+import com.example.index_market.dto.address.AddressDto;
 import com.example.index_market.dto.product.ProductDto;
 import com.example.index_market.dto.user.AuthUserDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -20,4 +21,5 @@ public class OrderUpdateDto extends GenericDto {
     private ProductDto product;
     private LocalDateTime time;
     private boolean arrived;
+    private AddressDto address;
 }

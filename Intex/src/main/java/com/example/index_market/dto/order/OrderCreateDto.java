@@ -1,8 +1,10 @@
 package com.example.index_market.dto.order;
 
 import com.example.index_market.dto.Dto;
+import com.example.index_market.dto.address.AddressDto;
 import com.example.index_market.dto.product.ProductDto;
 import com.example.index_market.dto.user.AuthUserDto;
+import com.example.index_market.entity.address.Address;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,4 +22,5 @@ public class OrderCreateDto implements Dto {
     private ProductDto product;
     private LocalDateTime time;
     private boolean arrived;
+    private AddressDto address;
 }
