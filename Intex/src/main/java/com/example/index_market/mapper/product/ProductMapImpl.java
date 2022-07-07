@@ -14,10 +14,15 @@ public class ProductMapImpl implements   BaseMapper<Product,
         ProductCreateDto,
         ProductUpdateDto> {
     @Override
-    public ProductDto toDto(Product product) {
+    public  ProductDto toDto(Product product) {
         ProductDto productDto = new ProductDto();
         productDto.setId(product.getId());
         return productDto;
+    }
+
+    @Override
+    public Product toClass(ProductDto productDto) {
+        return null;
     }
 
     @Override

@@ -16,15 +16,13 @@ import javax.persistence.*;
 @Data
 public class ProductCreateDto implements Dto {
     private Integer count;
-    private Double  price;
-    private String  description;
-    private Double  disPrice;
-    private String  size;
-    private Double  height;
-
-    private String  frameUz;
-    private String  frameRu;
-
+    private Double price;
+    private String description;
+    private Double disPrice;
+    private String size;
+    private Double height;
+    private String frameUz;
+    private String frameRu;
     private Category category;
 
     private Detail detail;
