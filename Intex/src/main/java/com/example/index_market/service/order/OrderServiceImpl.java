@@ -2,9 +2,13 @@ package com.example.index_market.service.order;
 
 import com.example.index_market.dto.order.OrderCreateDto;
 import com.example.index_market.dto.order.OrderUpdateDto;
+import com.example.index_market.entity.address.Address;
 import com.example.index_market.entity.auth.AuthUser;
 import com.example.index_market.entity.order.Order;
+import com.example.index_market.entity.product.Category;
+import com.example.index_market.entity.product.Detail;
 import com.example.index_market.entity.product.Product;
+import com.example.index_market.enums.product.Status;
 import com.example.index_market.mapper.order.OrderMapImpl;
 import com.example.index_market.repository.address.AddressRepository;
 import com.example.index_market.repository.order.OrderRepository;
@@ -16,52 +20,58 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class OrderServiceImpl extends AbstractService<OrderRepository, OrderMapImpl> implements OrderService {
 
-    private final UserRepository userRepository;
+    private final UserRepository userRepo;
+    private final ProductRepository productRepo;
+    private final AddressRepository addressRepo;
 
-    private final ProductRepository productRepository;
-
-    private final AddressRepository addressRepository;
 
     @Autowired
-    public OrderServiceImpl(
-            OrderRepository repository,
-            OrderMapImpl mapper,
-            UserRepository userRepo,
-            ProductRepository productRepo,
-            AddressRepository addressRepo) {
+    public OrderServiceImpl(OrderRepository repository, OrderMapImpl mapper, UserRepository userRepository, ProductRepository productRepository, AddressRepository addressRepository) {
         super(repository, mapper);
-        userRepository = userRepo;
-        productRepository = productRepo;
-        addressRepository = addressRepo;
+        userRepo = userRepository;
+        productRepo = productRepository;
+        addressRepo = addressRepository;
     }
 
     @Override
     public ApiResponse create(OrderCreateDto createDto) {
-        Order order = mapper.fromCreateDto(createDto);
-        Optional<Order> optional = repository.findById(order.getId());
-        if (optional.isEmpty()) {
-            return new ApiResponse(false, "Order not found");
+        Optional<AuthUser> user = userRepo.findById(createDto.getUser_id());
+        if (user.isEmpty()) {
+            return new ApiResponse(false, "User not found!");
         }
-        repository.save(order);
-        return new ApiResponse(true, "Successfully order created", order);
+        Optional<Product> product = productRepo.findById(createDto.getProduct_id());
+        if (product.isEmpty()) {
+            return new ApiResponse(false, "Product not found!");
+        }
+        //TODO address create
+
+//
+//
+//            Address address1=address.get();
+//            address1.setLang(createDto.getAddress().getLang());
+//            address1.setLat(createDto.getAddress().getLat());
+//            address1.setFullAddress(createDto.getAddress().getFullAddress());
+//            Address save = addressRepo.save(address1);
+//        Order order1 = mapper.fromCreateDtoToOrder(createDto, user.get(), product.get(),save);
+//
+
+
+        return new ApiResponse(true, "Successfully updated");
 
     }
 
     @Override
     public ApiResponse update(OrderUpdateDto updateDto) {
-        Order order = mapper.fromUpdateDto(updateDto);
-        Optional<Order> optional = repository.findById(order.getId());
-        if (optional.isEmpty()) {
-            return new ApiResponse(false, "Order not found");
-        }
-        repository.save(order);
-        return new ApiResponse(true, "Successfully order updated", order);
+        return null;
+
     }
 
     @Override
@@ -76,7 +86,6 @@ public class OrderServiceImpl extends AbstractService<OrderRepository, OrderMapI
 
     @Override
     public ApiResponse getAll() {
-
         return new ApiResponse(true,
                 repository.findAll().stream().map(mapper::toDto)
                         .collect(Collectors.toList())

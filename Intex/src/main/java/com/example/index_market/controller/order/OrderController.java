@@ -41,17 +41,6 @@ public class OrderController extends AbstractController<OrderServiceImpl> {
     }
 
 
-    /**
-     * buyurtmani tahrirlash
-     *
-     * @param dto
-     * @return
-     */
-    @PutMapping("/edit-order")
-    public HttpEntity<?>edit(@RequestBody OrderUpdateDto dto){
-        ApiResponse update = service.update(dto);
-        return ResponseEntity.status(update.isSuccess() ? 202 : 409).body(update);
-    }
 
 
     /**

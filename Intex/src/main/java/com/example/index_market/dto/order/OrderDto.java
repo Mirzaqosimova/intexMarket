@@ -17,10 +17,15 @@ import java.time.LocalDateTime;
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderDto extends GenericDto {
-    private AuthUserDto user;
-    private ProductDtoAdmin product;
+    private String  userName;
+    private String  userPhone;
+    private String  productImageUrl;
+    private Double productHeight;
+    private String productSize;
+    private Double productDisPrice;
+    private String addressFullName;
     private LocalDateTime time;
     private boolean arrived;
-    private String  address_id;
+
 
 }
