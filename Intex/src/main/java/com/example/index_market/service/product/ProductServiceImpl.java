@@ -1,6 +1,8 @@
 package com.example.index_market.service.product;
 
 import com.example.index_market.dto.product.ProductCreateDto;
+import com.example.index_market.dto.product.ProductDtoAdmin;
+import com.example.index_market.dto.product.ProductDtoUser;
 import com.example.index_market.dto.product.ProductUpdateDto;
 import com.example.index_market.entity.product.Category;
 import com.example.index_market.entity.product.Detail;
@@ -57,11 +59,23 @@ public class ProductServiceImpl extends AbstractService<ProductRepository, Produ
 
     @Override
     public ApiResponse update(ProductUpdateDto updateDto) {
-        Product product = mapper.fromUpdateDto(updateDto);
-        Optional<Product> optionalProduct = repository.findById(product.getId());
+        Optional<Product> optionalProduct = repository.findById(updateDto.getId());
         if (optionalProduct.isEmpty()) {
             return new ApiResponse(false, "Product not found");
         }
+
+        Optional<Category> optionalCategory = categoryRepo.findById(updateDto.getCategoryId());
+        if (optionalCategory.isEmpty()) {
+            return new ApiResponse(false, "Category not found!");
+        }
+
+        if (Arrays.stream(Status.values()).noneMatch(r -> r.name().equals(updateDto.getStatus()))) {
+            return new ApiResponse(false, "Status not found!");
+        }
+
+        List<Detail> allById = detailRepo.findAllById(updateDto.getDetailIdList());
+
+        Product product = mapper.fromUpdateDtoToProduct(updateDto, optionalCategory.get(), Status.valueOf(updateDto.getStatus()), allById);
         repository.save(product);
         return new ApiResponse(true, "Success", product);
     }
@@ -84,6 +98,7 @@ public class ProductServiceImpl extends AbstractService<ProductRepository, Produ
         return new ApiResponse(true, "Success", allProducts);
     }
 
+
     @Override
     public ApiResponse get(String id) {
         Optional<Product> optional = repository.findById(id);
@@ -93,5 +108,17 @@ public class ProductServiceImpl extends AbstractService<ProductRepository, Produ
         return new ApiResponse(true, "Success", optional.get());
     }
 
+
+    public ApiResponse getAllForAdmin() {
+        List<Product> allProducts = repository.findAll();
+        List<ProductDtoAdmin> productDtoList = mapper.toDtoForAdmin(allProducts);
+        return new ApiResponse(true, "Success", productDtoList);
+    }
+
+    public ApiResponse getAllForUser() {
+        List<Product> allProducts = repository.findAll();
+        List<ProductDtoUser> productDtoList =mapper.toDtoForUser(allProducts);
+        return new ApiResponse(true, "Success", productDtoList);
+    }
 
 }
