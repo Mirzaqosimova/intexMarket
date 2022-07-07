@@ -8,19 +8,15 @@ import com.example.index_market.mapper.BaseMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-
-
+@Component
 public class ProductMapImpl implements   BaseMapper<Product,
         ProductDto,
         ProductCreateDto,
         ProductUpdateDto> {
-
-
     @Override
     public  ProductDto toDto(Product product) {
         ProductDto productDto = new ProductDto();
         productDto.setId(product.getId());
-
         return productDto;
     }
 

@@ -16,4 +16,10 @@ import javax.persistence.Entity;
 public class Detail extends Auditable {
     private String nameUz;
     private String nameRu;
+
+    public Detail(String id, String nameUz, String nameRu) {
+        super(id);
+        this.nameUz = nameUz;
+        this.nameRu = nameRu;
+    }
 }

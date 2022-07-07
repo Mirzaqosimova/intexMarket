@@ -5,6 +5,7 @@ import com.example.index_market.enums.product.Status;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -25,4 +26,7 @@ public class Product extends Auditable {
     @Enumerated(EnumType.STRING)
     private Status status;
     private String imageUrl;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Detail> detailList;
 }

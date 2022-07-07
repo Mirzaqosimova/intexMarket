@@ -4,9 +4,14 @@ import com.example.index_market.dto.GenericDto;
 import com.example.index_market.entity.product.Category;
 import com.example.index_market.entity.product.Frame;
 import com.example.index_market.enums.product.Status;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class ProductDto extends GenericDto {
     private Integer count;
     private Double price;
@@ -16,7 +21,8 @@ public class ProductDto extends GenericDto {
     private Double height;
     private String frameUz;
     private String frameRu;
-    private Category category;
+    private String categoryUz;
+    private String categoryRu;
     private String status;
     private String imageUrl;
 }
