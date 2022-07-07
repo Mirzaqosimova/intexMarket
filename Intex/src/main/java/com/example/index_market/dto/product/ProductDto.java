@@ -13,7 +13,7 @@ public class ProductDto extends GenericDto {
     private String description;
     private Double disPrice;
     private String size;
-    private Double hieght;
+    private Double height;
     private String frameUz;
     private String frameRu;
     private Category category;

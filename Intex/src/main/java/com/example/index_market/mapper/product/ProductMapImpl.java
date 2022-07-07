@@ -5,19 +5,28 @@ import com.example.index_market.dto.product.ProductDto;
 import com.example.index_market.dto.product.ProductUpdateDto;
 import com.example.index_market.entity.product.Product;
 import com.example.index_market.mapper.BaseMapper;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
+
 
 public class ProductMapImpl implements   BaseMapper<Product,
         ProductDto,
         ProductCreateDto,
         ProductUpdateDto> {
+
+
     @Override
-    public ProductDto toDto(Product product) {
+    public  ProductDto toDto(Product product) {
         ProductDto productDto = new ProductDto();
         productDto.setId(product.getId());
 
         return productDto;
+    }
+
+    @Override
+    public Product toClass(ProductDto productDto) {
+        return null;
     }
 
     @Override
