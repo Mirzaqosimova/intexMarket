@@ -64,7 +64,12 @@ public class UserServiceImpl extends AbstractService<UserRepository, AuthUserMap
 
     @Override
     public ApiResponse delete(String id) {
-        return null;
+        try {
+            repository.deleteById(id);
+            return new ApiResponse(true,"Account not deleted");
+        }catch (Exception e){
+            return new ApiResponse(false,e.getMessage());
+        }
     }
 
     @Override
@@ -77,7 +82,7 @@ public class UserServiceImpl extends AbstractService<UserRepository, AuthUserMap
 
     @Override
     public ApiResponse get(String id) {
-        Optional<AuthUser> optional = repository.getByIdUser(id);
+        Optional<AuthUser> optional = repository.findById(id);
         if (optional.isEmpty()) return new ApiResponse(false, "User not found.Try again");
         AuthUser user = optional.get();
         return new ApiResponse(true, user);

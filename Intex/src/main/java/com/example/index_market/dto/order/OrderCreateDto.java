@@ -1,6 +1,8 @@
 package com.example.index_market.dto.order;
 
 import com.example.index_market.dto.Dto;
+import com.example.index_market.dto.address.AddressDto;
+import com.example.index_market.dto.product.ProductDto;
 import com.example.index_market.dto.product.ProductDtoAdmin;
 import com.example.index_market.dto.user.AuthUserDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -16,8 +18,9 @@ import java.time.LocalDateTime;
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderCreateDto implements Dto {
-    private AuthUserDto user;
-    private ProductDtoAdmin product;
+    private String user_id;
+    private String product_id;
     private LocalDateTime time;
     private boolean arrived;
+    private AddressDto address;
 }

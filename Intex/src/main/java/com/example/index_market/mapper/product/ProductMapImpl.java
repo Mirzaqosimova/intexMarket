@@ -1,6 +1,8 @@
 package com.example.index_market.mapper.product;
 
+import com.example.index_market.dto.order.OrderDto;
 import com.example.index_market.dto.product.ProductCreateDto;
+import com.example.index_market.dto.product.ProductDto;
 import com.example.index_market.dto.product.ProductDtoAdmin;
 import com.example.index_market.dto.product.ProductDtoUser;
 import com.example.index_market.dto.product.ProductUpdateDto;
@@ -9,43 +11,20 @@ import com.example.index_market.entity.product.Detail;
 import com.example.index_market.entity.product.Product;
 import com.example.index_market.enums.product.Status;
 import com.example.index_market.mapper.BaseMapper;
+import com.example.index_market.mapper.user.AuthUserMapImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@RequiredArgsConstructor
 @Component
 public class ProductMapImpl implements BaseMapper<Product,
-        ProductDtoAdmin,
+        ProductDto,
         ProductCreateDto,
         ProductUpdateDto> {
 
 
-    @Override
-    public ProductDtoAdmin toDto(Product product) {
-        return null;
-    }
-
-    @Override
-    public Product toClass(ProductDtoAdmin productDto) {
-        return null;
-    }
-
-    @Override
-    public List<ProductDtoAdmin> toDto(List<Product> e) {
-        return null;
-    }
-
-
-    @Override
-    public Product fromCreateDto(ProductCreateDto productCreateDto) {
-        return null;
-    }
-
-    @Override
-    public Product fromUpdateDto(ProductUpdateDto productUpdateDto) {
-        return null;
-    }
 
     public Product fromCreateDtoToProduct(ProductCreateDto productCreateDto,
                                           Category category,
@@ -133,4 +112,28 @@ public class ProductMapImpl implements BaseMapper<Product,
         return productDtoUserList;
     }
 
+    @Override
+    public ProductDto toDto(Product product) {
+        return null;
+    }
+
+    @Override
+    public Product toClass(ProductDto productDto) {
+        return null;
+    }
+
+    @Override
+    public List<ProductDto> toDto(List<Product> e) {
+        return null;
+    }
+
+    @Override
+    public Product fromCreateDto(ProductCreateDto productCreateDto) {
+        return null;
+    }
+
+    @Override
+    public Product fromUpdateDto(ProductUpdateDto d) {
+        return null;
+    }
 }
