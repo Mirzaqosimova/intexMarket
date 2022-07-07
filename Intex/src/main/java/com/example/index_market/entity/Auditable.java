@@ -33,6 +33,10 @@ public abstract class Auditable implements BaseEntity {
 
     private boolean deleted;
 
+    public Auditable(String id) {
+        this.id = id;
+    }
+
 
     @Override
     public int hashCode() {

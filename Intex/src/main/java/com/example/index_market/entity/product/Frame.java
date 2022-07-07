@@ -12,6 +12,13 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Frame extends Auditable {
-    private String frameUz;
-    private String frameRu;
+    // frame shakli 4burchak, uchburchak, 6burchak
+    private String nameUz;
+    private String nameRu;
+
+    public Frame(String id, String nameUz, String nameRu) {
+        super(id);
+        this.nameUz = nameUz;
+        this.nameRu = nameRu;
+    }
 }

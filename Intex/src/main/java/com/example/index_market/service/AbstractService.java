@@ -18,6 +18,4 @@ public abstract class AbstractService <R extends AbstractRepository, M extends  
         this.mapper = mapper;
 
     }
-
-
 }
