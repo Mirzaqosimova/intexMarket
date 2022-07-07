@@ -13,7 +13,7 @@ public class AuthUserUpdateDto extends GenericDto {
     private String name;
     private String phone;
     private String password;
-
+    private Role role;
 }
 
 
