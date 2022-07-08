@@ -4,6 +4,7 @@ import com.example.index_market.controller.AbstractController;
 import com.example.index_market.dto.product.ProductCreateDto;
 import com.example.index_market.dto.product.ProductUpdateDto;
 import com.example.index_market.response.ApiResponse;
+import com.example.index_market.service.product.ImageService;
 import com.example.index_market.service.product.ProductServiceImpl;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
