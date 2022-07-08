@@ -60,7 +60,7 @@ public class UserController extends AbstractController<UserServiceImpl> {
      * @return
      */
     @GetMapping("/get/{id}")
-    public HttpEntity<?>get(@PathVariable String id ){
+    public HttpEntity<?> get(@PathVariable String id ){
         ApiResponse apiResponse = service.get(id);
         return ResponseEntity.status(apiResponse.isSuccess() ? 200 : 409).body(apiResponse);
     }
