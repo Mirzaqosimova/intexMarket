@@ -14,7 +14,6 @@ import org.springframework.web.client.RestTemplate;
 @RequiredArgsConstructor
 public class NotificationService {
 
-    private final String URL_FOR_ORDER = "http://localhost:8080/api/notification/orders";
     private final String URL_FOR_CONSULTATION = "http://localhost:8080/api/notification/consultation";
     private final UserServiceImpl userService;
 
@@ -32,13 +31,14 @@ public class NotificationService {
         HttpEntity<MessageDto> request = new HttpEntity<>(messageDto);
         ResponseEntity<Void> response;
 if(isOrder){
-    response  = restTemplate.exchange(URL_FOR_ORDER, HttpMethod.POST, request, Void.class);
+    String url = "http://localhost:8080/api/notification/orders";
+    restTemplate.postForObject(url, request, Void.class);
 
 }else {
      response = restTemplate.exchange(URL_FOR_CONSULTATION, HttpMethod.POST, request, Void.class);
 
 }
-        return response.getStatusCode() == HttpStatus.OK;
+        return true;
 
     }
 

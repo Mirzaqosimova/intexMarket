@@ -3,6 +3,7 @@ package com.example.index_market.controller.product;
 import com.example.index_market.controller.AbstractController;
 import com.example.index_market.dto.product.ProductCreateDto;
 import com.example.index_market.dto.product.ProductUpdateDto;
+import com.example.index_market.entity.product.ImageService;
 import com.example.index_market.response.ApiResponse;
 import com.example.index_market.service.product.ProductServiceImpl;
 import org.springframework.http.MediaType;
@@ -52,19 +53,37 @@ public class ProductController extends AbstractController<ProductServiceImpl> {
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
-    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
-    @ResponseBody
-    public ResponseEntity<?> saveProduct(@RequestPart("image") MultipartHttpServletRequest request, @RequestPart("product") ProductCreateDto productCreateDto) {
-        String url ;
-        try {
-            url = imageService.getFileFromRequest(request);
-        } catch (Exception e) {
-            return ResponseEntity.status(409).body(new ApiResponse(false,"Cannot cast image"));
-        }
-        productCreateDto.setImageUrl(url);
+    @PostMapping("/image")
+    public ResponseEntity<?> saveImage(MultipartHttpServletRequest request) throws Exception {
+     String url = imageService.getFileFromRequest(request);
+     return ResponseEntity.status(200).body(url);
+    }
+
+    @PostMapping
+        public ResponseEntity<?> saveProduct(@RequestBody ProductCreateDto productCreateDto){
         ApiResponse response = service.create(productCreateDto);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
+
     }
+
+    @PutMapping("/edit")
+    public ResponseEntity<?> editProduct(@RequestBody ProductUpdateDto productUpdateDto){
+        ApiResponse response = service.update(productUpdateDto);
+        return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
+
+    }
+//    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+//    public ResponseEntity<?> saveProduct(@RequestPart("image") MultipartHttpServletRequest request, @RequestPart("product") ProductCreateDto productCreateDto) {
+//        String url ;
+//        try {
+//            url = imageService.getFileFromRequest(request);
+//        } catch (Exception e) {
+//            return ResponseEntity.status(409).body(new ApiResponse(false,"Cannot cast image"));
+//        }
+//        productCreateDto.setImageUrl(url);
+//        ApiResponse response = service.create(productCreateDto);
+//        return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
+//    }
 
     @PutMapping(path = "/edit",consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
     public ResponseEntity<?> updateProduct(@RequestPart MultipartHttpServletRequest reques,@RequestPart ProductUpdateDto productUpdateDto) {

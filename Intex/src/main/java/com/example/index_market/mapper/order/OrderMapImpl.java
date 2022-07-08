@@ -37,7 +37,6 @@ public class OrderMapImpl implements BaseMapper<Order,
 
     @Override
     public OrderDto toDto(Order order) {
-        if (order != null) return null;
         assert false;
         return OrderDto.builder()
                 .userName(order.getUser().getName())
@@ -61,7 +60,9 @@ public class OrderMapImpl implements BaseMapper<Order,
 
     @Override
     public List<OrderDto> toDto(List<Order> e) {
+
         return e.stream().map(this::toDto).collect(Collectors.toList());
+
     }
 
 

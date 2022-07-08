@@ -1,4 +1,4 @@
-package com.example.index_market.controller.product;
+package com.example.index_market.entity.product;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

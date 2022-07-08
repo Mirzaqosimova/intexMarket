@@ -86,9 +86,9 @@ public class OrderServiceImpl extends AbstractService<OrderRepository, OrderMapI
 
     @Override
     public ApiResponse getAll() {
-        return new ApiResponse(true,
-                repository.findAll().stream().map(mapper::toDto)
-                        .collect(Collectors.toList())
+        List<Order> all = repository.findAll();
+        List<OrderDto> collect = mapper.toDto(all);
+        return new ApiResponse(true,collect
         );
     }
 
