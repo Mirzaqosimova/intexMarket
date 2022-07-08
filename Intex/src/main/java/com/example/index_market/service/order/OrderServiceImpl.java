@@ -53,16 +53,6 @@ public class OrderServiceImpl extends AbstractService<OrderRepository, OrderMapI
         }
         //TODO address create
 
-//
-//
-//            Address address1=address.get();
-//            address1.setLang(createDto.getAddress().getLang());
-//            address1.setLat(createDto.getAddress().getLat());
-//            address1.setFullAddress(createDto.getAddress().getFullAddress());
-//            Address save = addressRepo.save(address1);
-//        Order order1 = mapper.fromCreateDtoToOrder(createDto, user.get(), product.get(),save);
-//
-
 
         return new ApiResponse(true, "Successfully updated");
 
