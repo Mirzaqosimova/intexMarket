@@ -5,6 +5,7 @@ import com.example.index_market.dto.order.OrderCreateDto;
 import com.example.index_market.dto.order.OrderUpdateDto;
 import com.example.index_market.response.ApiResponse;
 import com.example.index_market.service.order.OrderServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ public class OrderController extends AbstractController<OrderServiceImpl> {
      *
      * @return
      */
+    @Operation(summary = "all orders",description = "hamma orderlarni ko'rish")
     @GetMapping("/get-all-orders")
     public HttpEntity<?> getAll() {
         ApiResponse all = service.getAll();
@@ -34,6 +36,7 @@ public class OrderController extends AbstractController<OrderServiceImpl> {
      * @param id
      * @return
      */
+    @Operation(summary = "delete method",description = "orderni delete qilish")
     @DeleteMapping("/delete-order/{id}")
     public HttpEntity<?> delete(@PathVariable String id) {
         ApiResponse delete = service.delete(id);
@@ -49,6 +52,7 @@ public class OrderController extends AbstractController<OrderServiceImpl> {
      * @param dto
      * @return
      */
+    @Operation(summary = "create method",description = "buyurtma berish")
     @PostMapping("/add-order")
     public HttpEntity<?>add(@RequestBody OrderCreateDto dto){
         ApiResponse response = service.create(dto);

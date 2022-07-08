@@ -6,6 +6,7 @@ import com.example.index_market.dto.user.AuthUserUpdateDto;
 import com.example.index_market.dto.user.SingInDto;
 import com.example.index_market.entity.Auditable;
 import com.example.index_market.entity.auth.AuthUser;
+import com.example.index_market.entity.product.Detail;
 import com.example.index_market.enums.user.Role;
 import com.example.index_market.mapper.user.AuthUserMapImpl;
 import com.example.index_market.repository.user.UserRepository;
@@ -44,7 +45,13 @@ public class UserServiceImpl extends AbstractService<UserRepository, AuthUserMap
 
     @Override
     public ApiResponse create(AuthUserCreateDto createDto) {
-        return null;
+        boolean exists = repository.existsByPhone(createDto.getPhone());
+        if (exists) {
+            return new ApiResponse(false, "User already exist");
+        }
+        AuthUser authUser = mapper.fromCreateDto(createDto);
+        repository.save(authUser);
+        return new ApiResponse(true, "Successfully added!!");
     }
 
     @Override
@@ -66,9 +73,9 @@ public class UserServiceImpl extends AbstractService<UserRepository, AuthUserMap
     public ApiResponse delete(String id) {
         try {
             repository.deleteById(id);
-            return new ApiResponse(true,"Account not deleted");
-        }catch (Exception e){
-            return new ApiResponse(false,e.getMessage());
+            return new ApiResponse(true, "Account not deleted");
+        } catch (Exception e) {
+            return new ApiResponse(false, e.getMessage());
         }
     }
 
@@ -88,7 +95,7 @@ public class UserServiceImpl extends AbstractService<UserRepository, AuthUserMap
         return new ApiResponse(true, user);
     }
 
-    public String getAdminId(){
+    public String getAdminId() {
         Optional<AuthUser> admin = repository.findByRole(Role.ADMIN);
         return admin.map(Auditable::getId).orElse(null);
     }
