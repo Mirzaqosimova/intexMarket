@@ -21,9 +21,13 @@ public class AuthUser extends Auditable {
 
     private String name;
 
+    @Column(nullable = false,unique = true)
     private String phone;
 
     private String password;
+
     @Enumerated(EnumType.STRING)
     private Role role;
+
+
 }

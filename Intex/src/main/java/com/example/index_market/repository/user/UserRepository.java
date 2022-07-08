@@ -18,5 +18,7 @@ public interface UserRepository extends AbstractRepository, JpaRepository<AuthUs
 
     Optional<AuthUser> findByName(String name);
 
+    Optional<AuthUser> findByPhone(String phone);
 
+    boolean existsByPhone(String phone);
 }
