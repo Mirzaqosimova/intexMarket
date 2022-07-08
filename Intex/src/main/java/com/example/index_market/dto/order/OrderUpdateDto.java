@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Builder
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderUpdateDto extends GenericDto {
     private String user_id;
     private String product_id;

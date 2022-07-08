@@ -16,32 +16,32 @@ public class CategoryController extends AbstractController<CategoryServiceImpl> 
         super(service);
     }
 
-    @GetMapping()
+    @GetMapping("/get-all-category")
     public ResponseEntity<?> getAllCategory() {
         ApiResponse response = service.getAll();
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get-category/{id}")
     public ResponseEntity<?> getOneCategory(@PathVariable String id) {
         ApiResponse response = service.get(id);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete-category/{id}")
     public ResponseEntity<?> deleteCategoryById(@PathVariable String id) {
         ApiResponse response = service.delete(id);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
-    @PostMapping
+    @PostMapping("/add-category")
     public ResponseEntity<?> saveCategory(@RequestBody CategoryCreateDto categoryCreateDto) {
         ApiResponse response = service.create(categoryCreateDto);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/edit-category")
     public ResponseEntity<?> updateCategory(@RequestBody CategoryUpdateDto categoryUpdateDto) {
         ApiResponse response = service.update(categoryUpdateDto);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);

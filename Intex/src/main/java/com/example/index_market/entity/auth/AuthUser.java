@@ -21,9 +21,6 @@ public class AuthUser extends Auditable {
 
     private String name;
 
-    @Pattern(regexp = "^(\\+\\d{1,13})$", message = "PHONE NUMBER FORMAT MUST BE : (+998) XX XXX-XX-XX")
-    @NotNull
-    @Size(min = 13)
     private String phone;
 
     private String password;
