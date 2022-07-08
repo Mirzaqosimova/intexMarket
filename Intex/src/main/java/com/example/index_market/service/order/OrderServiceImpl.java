@@ -1,6 +1,7 @@
 package com.example.index_market.service.order;
 
 import com.example.index_market.dto.order.OrderCreateDto;
+import com.example.index_market.dto.order.OrderDto;
 import com.example.index_market.dto.order.OrderUpdateDto;
 import com.example.index_market.entity.address.Address;
 import com.example.index_market.entity.auth.AuthUser;
@@ -16,6 +17,7 @@ import com.example.index_market.repository.product.ProductRepository;
 import com.example.index_market.repository.user.UserRepository;
 import com.example.index_market.response.ApiResponse;
 import com.example.index_market.service.AbstractService;
+import com.example.index_market.service.notification.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,14 +33,16 @@ public class OrderServiceImpl extends AbstractService<OrderRepository, OrderMapI
     private final UserRepository userRepo;
     private final ProductRepository productRepo;
     private final AddressRepository addressRepo;
+    private final NotificationService notificationService;
 
 
     @Autowired
-    public OrderServiceImpl(OrderRepository repository, OrderMapImpl mapper, UserRepository userRepository, ProductRepository productRepository, AddressRepository addressRepository) {
+    public OrderServiceImpl(OrderRepository repository,NotificationService notificationService, OrderMapImpl mapper, UserRepository userRepository, ProductRepository productRepository, AddressRepository addressRepository) {
         super(repository, mapper);
         userRepo = userRepository;
         productRepo = productRepository;
         addressRepo = addressRepository;
+        this.notificationService = notificationService;
     }
 
     @Override
@@ -51,19 +55,15 @@ public class OrderServiceImpl extends AbstractService<OrderRepository, OrderMapI
         if (product.isEmpty()) {
             return new ApiResponse(false, "Product not found!");
         }
-        //TODO address create
 
-//
-//
-//            Address address1=address.get();
-//            address1.setLang(createDto.getAddress().getLang());
-//            address1.setLat(createDto.getAddress().getLat());
-//            address1.setFullAddress(createDto.getAddress().getFullAddress());
-//            Address save = addressRepo.save(address1);
-//        Order order1 = mapper.fromCreateDtoToOrder(createDto, user.get(), product.get(),save);
-//
+        Address address = new Address(createDto.getAddress().getLat(),
+                createDto.getAddress().getLang(),
+                createDto.getAddress().getFullAddress());
 
-
+        address = addressRepo.save(address);
+        Order order = mapper.fromCreateDtoToOrder(createDto, user.get(), product.get(), address);
+        OrderDto orderDto = mapper.toDto(repository.save(order));
+        notificationService.sendNotification(orderDto,true);
         return new ApiResponse(true, "Successfully updated");
 
     }

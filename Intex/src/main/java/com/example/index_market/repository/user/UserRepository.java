@@ -18,7 +18,5 @@ public interface UserRepository extends AbstractRepository, JpaRepository<AuthUs
 
     Optional<AuthUser> findByName(String name);
 
-    @Query(value = "select * from auth_user where id=:user_id",nativeQuery = true)
-    Optional<AuthUser> getByIdUser(String user_id);
 
 }
