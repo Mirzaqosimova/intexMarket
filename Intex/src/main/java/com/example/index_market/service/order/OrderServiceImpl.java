@@ -65,7 +65,7 @@ public class OrderServiceImpl extends AbstractService<OrderRepository, OrderMapI
         address = addressRepo.save(address);
         Order order = mapper.fromCreateDtoToOrder(createDto, user.get(), product.get(), address);
         OrderDto orderDto = mapper.toDto(repository.save(order));
-        notificationService.sendNotification(orderDto, true);
+        notificationService.sendNotification(orderDto, null);
         return new ApiResponse(true, "Successfully created!!!");
 
     }

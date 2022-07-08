@@ -23,7 +23,7 @@ public class ConsultationServiceImpl extends AbstractService<ConsultationRepo, C
     @Override
     public ApiResponse create(ConsultationCreateDto createDto) {
         Consultant consultant = mapper.fromCreateDto(createDto);
-        notificationService.sendNotification(mapper.toDto(consultant),false);
+        notificationService.sendNotification(null,mapper.toDto(consultant));
         return null;
     }
 
