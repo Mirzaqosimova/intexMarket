@@ -75,7 +75,7 @@ public class UserServiceImpl extends AbstractService<UserRepository, AuthUserMap
     @Override
     public ApiResponse getAll() {
         return new ApiResponse(true,
-                repository.findAll().stream().map(item -> mapper.toDto(item))
+                repository.findAll().stream().map(mapper::toDto)
                         .collect(Collectors.toList())
         );
     }

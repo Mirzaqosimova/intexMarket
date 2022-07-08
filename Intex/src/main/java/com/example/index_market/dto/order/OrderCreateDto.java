@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Builder
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderCreateDto implements Dto {
     private String user_id;
     private String product_id;

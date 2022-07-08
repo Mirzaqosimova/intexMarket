@@ -3,6 +3,7 @@ package com.example.index_market.service.order;
 import com.example.index_market.dto.order.OrderCreateDto;
 import com.example.index_market.dto.order.OrderDto;
 import com.example.index_market.dto.order.OrderUpdateDto;
+import com.example.index_market.dto.product.ProductDtoUser;
 import com.example.index_market.entity.address.Address;
 import com.example.index_market.entity.auth.AuthUser;
 import com.example.index_market.entity.order.Order;
@@ -37,7 +38,7 @@ public class OrderServiceImpl extends AbstractService<OrderRepository, OrderMapI
 
 
     @Autowired
-    public OrderServiceImpl(OrderRepository repository,NotificationService notificationService, OrderMapImpl mapper, UserRepository userRepository, ProductRepository productRepository, AddressRepository addressRepository) {
+    public OrderServiceImpl(OrderRepository repository, NotificationService notificationService, OrderMapImpl mapper, UserRepository userRepository, ProductRepository productRepository, AddressRepository addressRepository) {
         super(repository, mapper);
         userRepo = userRepository;
         productRepo = productRepository;
@@ -55,6 +56,7 @@ public class OrderServiceImpl extends AbstractService<OrderRepository, OrderMapI
         if (product.isEmpty()) {
             return new ApiResponse(false, "Product not found!");
         }
+        //TODO address create
 
         Address address = new Address(createDto.getAddress().getLat(),
                 createDto.getAddress().getLang(),
@@ -63,8 +65,8 @@ public class OrderServiceImpl extends AbstractService<OrderRepository, OrderMapI
         address = addressRepo.save(address);
         Order order = mapper.fromCreateDtoToOrder(createDto, user.get(), product.get(), address);
         OrderDto orderDto = mapper.toDto(repository.save(order));
-        notificationService.sendNotification(orderDto,true);
-        return new ApiResponse(true, "Successfully updated");
+        notificationService.sendNotification(orderDto, true);
+        return new ApiResponse(true, "Successfully created!!!");
 
     }
 
@@ -78,9 +80,9 @@ public class OrderServiceImpl extends AbstractService<OrderRepository, OrderMapI
     public ApiResponse delete(String id) {
         try {
             repository.deleteById(id);
-            return new ApiResponse(true, "Something is wrong. Order not deleted");
+            return new ApiResponse(true, "Successfully deleted");
         } catch (Exception e) {
-            return new ApiResponse(false, e.getMessage());
+        return new ApiResponse(false, "Could not deleted!");
         }
     }
 

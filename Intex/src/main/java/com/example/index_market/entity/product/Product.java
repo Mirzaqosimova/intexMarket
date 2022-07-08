@@ -21,6 +21,7 @@ public class Product extends Auditable {
     private Double height;
     private String frameUz;
     private String frameRu;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Category category;
     @Enumerated(EnumType.STRING)
