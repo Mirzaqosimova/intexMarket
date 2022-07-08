@@ -22,26 +22,26 @@ public class DetailController extends AbstractController<DetailServiceImpl> {
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get-order/{id}")
     public ResponseEntity<?> getOneDetail(@PathVariable String id) {
         ApiResponse response = service.get(id);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete-detail/{id}")
     public ResponseEntity<?> deleteDetailById(@PathVariable String id) {
         ApiResponse response = service.delete(id);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
-    @PostMapping
+    @PostMapping("add-detail")
     public ResponseEntity<?> saveDetail(@RequestBody DetailCreateDto detailCreateDto) {
         ApiResponse response = service.create(detailCreateDto);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/edit-detail")
     public ResponseEntity<?> updateDetail(@RequestBody DetailUpdateDto detailUpdateDto) {
         ApiResponse response = service.update(detailUpdateDto);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);

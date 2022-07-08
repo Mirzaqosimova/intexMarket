@@ -23,7 +23,7 @@ public class ProductController extends AbstractController<ProductServiceImpl> {
 
 
 
-    @GetMapping("/forAdmin")
+    @GetMapping("/get-all-products-for-admin")
     public ResponseEntity<?> getAllProductsForAdmin(){
         ApiResponse response = service.getAllForAdmin();
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
@@ -31,7 +31,7 @@ public class ProductController extends AbstractController<ProductServiceImpl> {
 
 
 
-    @GetMapping("/forUser")
+    @GetMapping("/get-all-products-for-user")
     public ResponseEntity<?> getAllProductsForUser(){
         ApiResponse response = service.getAllForUser();
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
@@ -39,14 +39,14 @@ public class ProductController extends AbstractController<ProductServiceImpl> {
 
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/get-product/{id}")
     public ResponseEntity<?> getOneProduct(@PathVariable String id) {
         ApiResponse response = service.get(id);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete-product/{id}")
     public ResponseEntity<?> deleteProductById(@PathVariable String id) {
         ApiResponse response = service.delete(id);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
@@ -66,12 +66,12 @@ public class ProductController extends AbstractController<ProductServiceImpl> {
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
-    @PutMapping(path = "/edit",consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
-    public ResponseEntity<?> updateProduct(@RequestPart MultipartHttpServletRequest reques,@RequestPart ProductUpdateDto productUpdateDto) {
+    @PutMapping(path = "/edit-product",consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+    public ResponseEntity<?> updateProduct(@RequestPart MultipartHttpServletRequest request,@RequestPart ProductUpdateDto productUpdateDto) {
 
         String url ;
         try {
-            url = imageService.getFileFromRequest(reques);
+            url = imageService.getFileFromRequest(request);
         } catch (Exception e) {
           return ResponseEntity.status(409).body(new ApiResponse(false,"Cannot cast image"));
         }
