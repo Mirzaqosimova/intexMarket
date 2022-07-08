@@ -19,9 +19,6 @@ import com.example.index_market.service.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -30,15 +27,15 @@ public class OrderServiceImpl extends AbstractService<OrderRepository, OrderMapI
 
     private final UserRepository userRepo;
     private final ProductRepository productRepo;
-    private final AddressRepository addressRepo;
+
 
 
     @Autowired
-    public OrderServiceImpl(OrderRepository repository, OrderMapImpl mapper, UserRepository userRepository, ProductRepository productRepository, AddressRepository addressRepository) {
+    public OrderServiceImpl(OrderRepository repository, OrderMapImpl mapper, UserRepository userRepository, ProductRepository productRepository) {
         super(repository, mapper);
         userRepo = userRepository;
         productRepo = productRepository;
-        addressRepo = addressRepository;
+
     }
 
     @Override
