@@ -19,9 +19,10 @@ public class NotificationController {
 
     @PostMapping("/orders")
     @MessageMapping("/send-order")
-    public void sendMessagestoOrders(MessageDto messageDto) throws Exception {
+    public boolean sendMessagestoOrders(MessageDto messageDto) throws Exception {
         simpMessagingTemplate.convertAndSendToUser(
                 messageDto.getReceiverId(), "queue/messages", messageDto);
+   return true;
     }
 
     @PostMapping("/consultation")
