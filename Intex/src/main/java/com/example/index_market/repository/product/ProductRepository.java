@@ -11,4 +11,5 @@ import java.util.List;
 public interface ProductRepository extends AbstractRepository, JpaRepository<Product, String> {
 
 
+    List<Product> findAllByCategoryId(String categoryId);
 }

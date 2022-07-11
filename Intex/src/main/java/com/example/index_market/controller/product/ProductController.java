@@ -31,14 +31,17 @@ public class ProductController extends AbstractController<ProductServiceImpl> {
     }
 
 
-
     @GetMapping("/get-all-products-for-user")
     public ResponseEntity<?> getAllProductsForUser(){
         ApiResponse response = service.getAllForUser();
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
-
+    @GetMapping("/forUser/{categoryId}")
+    public ResponseEntity<?> getAllCategories(@PathVariable String categoryId) {
+        ApiResponse response = service.getAllProductByCategoryId(categoryId);
+        return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
+    }
 
     @GetMapping("/get-product/{id}")
     public ResponseEntity<?> getOneProduct(@PathVariable String id) {
@@ -53,33 +56,51 @@ public class ProductController extends AbstractController<ProductServiceImpl> {
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
-    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
-    @ResponseBody
-    public ResponseEntity<?> saveProduct(@RequestPart("image") MultipartHttpServletRequest request, @RequestPart("product") ProductCreateDto productCreateDto) {
-        String url ;
-        try {
-            url = imageService.getFileFromRequest(request);
-        } catch (Exception e) {
-            return ResponseEntity.status(409).body(new ApiResponse(false,"Cannot cast image"));
-        }
-        productCreateDto.setImageUrl(url);
+    @PostMapping("/image")
+    public ResponseEntity<?> saveImage(MultipartHttpServletRequest request) throws Exception {
+        String url = imageService.getFileFromRequest(request);
+        return ResponseEntity.status(200).body(url);
+    }
+
+    @PostMapping
+    public ResponseEntity<?> saveProduct(@RequestBody ProductCreateDto productCreateDto){
         ApiResponse response = service.create(productCreateDto);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
+
     }
 
-    @PutMapping(path = "/edit-product",consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
-    public ResponseEntity<?> updateProduct(@RequestPart MultipartHttpServletRequest request,@RequestPart ProductUpdateDto productUpdateDto) {
-
-        String url ;
-        try {
-            url = imageService.getFileFromRequest(request);
-        } catch (Exception e) {
-          return ResponseEntity.status(409).body(new ApiResponse(false,"Cannot cast image"));
-        }
-        productUpdateDto.setImageUrl(url);
+    @PutMapping("/edit")
+    public ResponseEntity<?> editProduct(@RequestBody ProductUpdateDto productUpdateDto){
         ApiResponse response = service.update(productUpdateDto);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
+
     }
+//    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+//    public ResponseEntity<?> saveProduct(@RequestPart("image") MultipartHttpServletRequest request, @RequestPart("product") ProductCreateDto productCreateDto) {
+//        String url ;
+//        try {
+//            url = imageService.getFileFromRequest(request);
+//        } catch (Exception e) {
+//            return ResponseEntity.status(409).body(new ApiResponse(false,"Cannot cast image"));
+//        }
+//        productCreateDto.setImageUrl(url);
+//        ApiResponse response = service.create(productCreateDto);
+//        return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
+//    }
+
+//    @PutMapping(path = "/edit-product",consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+//    public ResponseEntity<?> updateProduct(@RequestPart MultipartHttpServletRequest request,@RequestPart ProductUpdateDto productUpdateDto) {
+//
+//        String url ;
+//        try {
+//            url = imageService.getFileFromRequest(request);
+//        } catch (Exception e) {
+//          return ResponseEntity.status(409).body(new ApiResponse(false,"Cannot cast image"));
+//        }
+//        productUpdateDto.setImageUrl(url);
+//        ApiResponse response = service.update(productUpdateDto);
+//        return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
+//    }
 
 
 }
