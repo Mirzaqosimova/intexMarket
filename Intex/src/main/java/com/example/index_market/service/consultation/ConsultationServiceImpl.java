@@ -1,37 +1,53 @@
 package com.example.index_market.service.consultation;
 
-import com.example.index_market.dto.consultation.ConsultationDto;
-import com.example.index_market.dto.consultation.CreateOrUpdateConsultationDto;
+import com.example.index_market.dto.consultation.ConsultationSelectAndUpdateDto;
+import com.example.index_market.dto.consultation.ConsultationCreateDto;
+import com.example.index_market.entity.consultant.Consultant;
 import com.example.index_market.mapper.consultation.ConsultationMapImpl;
 import com.example.index_market.repository.consult.ConsultationRepo;
 import com.example.index_market.response.ApiResponse;
 import com.example.index_market.service.AbstractService;
+import com.example.index_market.service.notification.NotificationService;
+
+import java.util.List;
 
 public class ConsultationServiceImpl extends AbstractService<ConsultationRepo, ConsultationMapImpl> implements ConsultaionService{
-//TODO XALI CONSULTATSIYA CHALA
-    public ConsultationServiceImpl(ConsultationRepo repository, ConsultationMapImpl mapper) {
+
+    private final NotificationService notificationService;
+
+    public ConsultationServiceImpl(ConsultationRepo repository, ConsultationMapImpl mapper, NotificationService notificationService) {
         super(repository, mapper);
+        this.notificationService = notificationService;
     }
 
-
     @Override
-    public ApiResponse create(ConsultationDto createDto) {
+    public ApiResponse create(ConsultationCreateDto createDto) {
+        Consultant consultant = mapper.fromCreateDto(createDto);
+        notificationService.sendNotification(consultant,false);
         return null;
     }
 
     @Override
-    public ApiResponse update(CreateOrUpdateConsultationDto updateDto) {
+    public ApiResponse update(ConsultationSelectAndUpdateDto updateDto) {
         return null;
     }
+
 
     @Override
     public ApiResponse delete(String id) {
-        return null;
+        try {
+            repository.deleteById(id);
+            return new ApiResponse(true, "Something is wrong. Order not deleted");
+        } catch (Exception e) {
+            return new ApiResponse(false, e.getMessage());
+        }
     }
 
     @Override
     public ApiResponse getAll() {
-        return null;
+        List<Consultant> all = repository.findAll();
+        List<ConsultationSelectAndUpdateDto> consultationSelectAndUpdateDtos = mapper.toDto(all);
+        return new ApiResponse(true,"Successfully sent",consultationSelectAndUpdateDtos);
     }
 
     @Override

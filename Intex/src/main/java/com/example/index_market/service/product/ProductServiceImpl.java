@@ -29,6 +29,12 @@ public class ProductServiceImpl extends AbstractService<ProductRepository, Produ
 
     private final DetailRepository detailRepo;
 
+    public ApiResponse getAllProductByCategoryId(String categoryId) {
+        List<Product> productList = repository.findAllByCategoryId(categoryId);
+        List<ProductDtoUser> productDtoByCountryId = mapper.toDtoForUser(productList);
+        return new ApiResponse(true, "Success", productDtoByCountryId);
+    }
+
 
     @Autowired
     public ProductServiceImpl(ProductRepository repository,
