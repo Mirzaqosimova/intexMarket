@@ -5,43 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81731e23-2c31-4f71-9666-eb5b9658a659" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/controller/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/controller/product/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/order/OrderCreateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/order/OrderCreateDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/order/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/order/OrderDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/order/OrderUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/order/OrderUpdateDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/product/ProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/product/ProductDtoAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/product/ProductUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/product/ProductUpdateDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/mapper/category/CategoryMapImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/mapper/category/CategoryMapImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/mapper/detail/DetailMapImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/mapper/detail/DetailMapImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/mapper/product/ProductMapImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/mapper/product/ProductMapImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/service/product/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/service/product/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/consultation/ConsultationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/consultation/ConsultationCreateDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/consultation/CreateOrUpdateConsultationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/consultation/ConsultationSelectAndUpdateDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/message/MessageDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/dto/message/MessageDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/entity/consultant/Consultant.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/entity/consultant/Consultant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/mapper/consultation/ConsultationMapImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/mapper/consultation/ConsultationMapImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/repository/product/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/repository/product/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/service/consultation/ConsultaionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/service/consultation/ConsultaionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/service/consultation/ConsultationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/service/consultation/ConsultationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/service/notification/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/service/notification/NotificationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/service/product/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/java/com/example/index_market/service/product/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/detail/DetailDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/detail/DetailDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/frame/FrameCreateDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/frame/FrameDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/frame/FrameUpdateDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/product/ProductCreateDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/product/ProductCreateDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/product/ProductDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/product/ProductDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/product/ProductUpdateDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/dto/product/ProductUpdateDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/auth/AuthUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/auth/AuthUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/order/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/order/Order.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/product/Detail.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/product/Detail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/product/Frame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/product/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/product/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/BaseMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/BaseMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/category/CategoryMapImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/category/CategoryMapImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/detail/DetailMapImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/detail/DetailMapImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/frame/FrameMapImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/product/ProductMapImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/mapper/product/ProductMapImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/repository/frame/FrameRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/AbstractService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/AbstractService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/category/CategoryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/category/CategoryServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/detail/DetailServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/detail/DetailServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/frame/FrameService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/frame/FrameServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/controller/category/CategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/controller/category/CategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/consultant/Consultant.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/entity/consultant/Consultant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/repository/product/ProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/repository/product/ProductRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/product/ProductServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Intex/target/classes/com/example/index_market/service/product/ProductServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,6 +44,14 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
       <map>
@@ -84,13 +71,6 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectId" id="2BZ2WVRKaxQbBYPo8buKtTpnnXk" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -99,19 +79,15 @@
     <option name="autoscrollFromSource" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/b7-cinema-service-main",
-    "spring.configuration.checksum": "680cc7e32aa5de0bbdbfe297c91b7fcc"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.index_market.service.frame" />
@@ -147,6 +123,7 @@
       <workItem from="1657109757028" duration="2573000" />
       <workItem from="1657129785861" duration="100000" />
       <workItem from="1657167017023" duration="22778000" />
+      <workItem from="1657518674103" duration="748000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1657176938396</created>
