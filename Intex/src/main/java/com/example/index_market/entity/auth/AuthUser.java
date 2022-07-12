@@ -21,7 +21,7 @@ public class AuthUser extends Auditable {
 
     private String name;
 
-    @Column(nullable = false,unique = true)
+
     private String phone;
 
     private String password;
@@ -29,5 +29,9 @@ public class AuthUser extends Auditable {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-
+    public AuthUser(String name, String phone,Role role) {
+        this.name = name;
+        this.phone = phone;
+        this.role = role;
+    }
 }

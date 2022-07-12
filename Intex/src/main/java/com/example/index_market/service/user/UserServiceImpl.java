@@ -29,14 +29,17 @@ public class UserServiceImpl extends AbstractService<UserRepository, AuthUserMap
 
 
     public ApiResponse login(SingInDto singInDto) {
-        Optional<AuthUser> userName = repository.findByName(singInDto.getUsername());
+        Optional<AuthUser> user1 = repository.findByName(singInDto.getName());
 
-        if (userName.isEmpty()) {
+        if (user1.isEmpty()) {
             return new ApiResponse(false, "Not found user.");
         }
-        AuthUser user = userName.get();
-        if (user.getName().equals(singInDto.getUsername()) && user.getPassword().equals(singInDto.getPassword()))
+        AuthUser user = user1.get();
+        if (user.getName().equals(singInDto.getName())) {
+            if (user.getPassword().equals(singInDto.getPassword()))
             return new ApiResponse(true, "successfully login", singInDto);
+        }
+
         return new ApiResponse(false, "Username or password is wrong,Please try again");
 
 

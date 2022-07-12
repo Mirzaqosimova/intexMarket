@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class SingInDto {
-    private String username;
+    private String name;
 
     @NotNull
     private String password;

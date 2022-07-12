@@ -11,6 +11,7 @@ import com.example.index_market.entity.product.Category;
 import com.example.index_market.entity.product.Detail;
 import com.example.index_market.entity.product.Product;
 import com.example.index_market.enums.product.Status;
+import com.example.index_market.enums.user.Role;
 import com.example.index_market.mapper.order.OrderMapImpl;
 import com.example.index_market.repository.address.AddressRepository;
 import com.example.index_market.repository.order.OrderRepository;
@@ -48,25 +49,29 @@ public class OrderServiceImpl extends AbstractService<OrderRepository, OrderMapI
 
     @Override
     public ApiResponse create(OrderCreateDto createDto) {
-        Optional<AuthUser> user = userRepo.findById(createDto.getUser_id());
-        if (user.isEmpty()) {
-            return new ApiResponse(false, "User not found!");
+        AuthUser userOrder;
+        Optional<AuthUser> user = userRepo.findByPhone(createDto.getUserPhone());
+        if (user.isPresent()) {
+          userOrder = user.get();
+            userOrder.setName(createDto.getUserName());
+        }else {
+            userOrder = new AuthUser(createDto.getUserName(), createDto.getUserPhone(), Role.USER);
         }
+        AuthUser save = userRepo.save(userOrder);
+
         Optional<Product> product = productRepo.findById(createDto.getProduct_id());
         if (product.isEmpty()) {
             return new ApiResponse(false, "Product not found!");
         }
-        //TODO address create
-
         Address address = new Address(createDto.getAddress().getLat(),
                 createDto.getAddress().getLang(),
                 createDto.getAddress().getFullAddress());
 
         address = addressRepo.save(address);
-        Order order = mapper.fromCreateDtoToOrder(createDto, user.get(), product.get(), address);
+        Order order = mapper.fromCreateDtoToOrder(createDto, save, product.get(), address);
         OrderDto orderDto = mapper.toDto(repository.save(order));
-        notificationService.sendNotification(orderDto, true);
-        return new ApiResponse(true, "Successfully created!!!");
+     //   notificationService.sendNotification(orderDto, true);
+        return new ApiResponse(true, "Successfully created!!!",orderDto);
 
     }
 
@@ -82,7 +87,7 @@ public class OrderServiceImpl extends AbstractService<OrderRepository, OrderMapI
             repository.deleteById(id);
             return new ApiResponse(true, "Successfully deleted");
         } catch (Exception e) {
-        return new ApiResponse(false, "Could not deleted!");
+            return new ApiResponse(false, "Could not deleted!");
         }
     }
 
