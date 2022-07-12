@@ -17,7 +17,8 @@ import java.time.LocalDateTime;
 @Setter
 @Builder
 public class OrderCreateDto implements Dto {
-    private String user_id;
+    private String  userName;
+    private String  userPhone;
     private String product_id;
     private LocalDateTime time;
     private boolean arrived;
