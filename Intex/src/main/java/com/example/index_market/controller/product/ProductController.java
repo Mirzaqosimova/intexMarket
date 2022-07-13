@@ -6,6 +6,7 @@ import com.example.index_market.dto.product.ProductUpdateDto;
 import com.example.index_market.response.ApiResponse;
 import com.example.index_market.service.product.ImageService;
 import com.example.index_market.service.product.ProductServiceImpl;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,16 +24,15 @@ public class ProductController extends AbstractController<ProductServiceImpl> {
     }
 
 
-
     @GetMapping("/get-all-products-for-admin")
-    public ResponseEntity<?> getAllProductsForAdmin(){
+    public ResponseEntity<?> getAllProductsForAdmin() {
         ApiResponse response = service.getAllForAdmin();
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
 
 
     @GetMapping("/get-all-products-for-user")
-    public ResponseEntity<?> getAllProductsForUser(){
+    public ResponseEntity<?> getAllProductsForUser() {
         ApiResponse response = service.getAllForUser();
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
     }
@@ -63,18 +63,27 @@ public class ProductController extends AbstractController<ProductServiceImpl> {
     }
 
     @PostMapping
-    public ResponseEntity<?> saveProduct(@RequestBody ProductCreateDto productCreateDto){
+    public ResponseEntity<?> saveProduct(@RequestBody ProductCreateDto productCreateDto) {
         ApiResponse response = service.create(productCreateDto);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
 
     }
 
     @PutMapping("/edit")
-    public ResponseEntity<?> editProduct(@RequestBody ProductUpdateDto productUpdateDto){
+    public ResponseEntity<?> editProduct(@RequestBody ProductUpdateDto productUpdateDto) {
         ApiResponse response = service.update(productUpdateDto);
         return ResponseEntity.status(response.isSuccess() ? 201 : 409).body(response);
 
     }
+
+
+    @GetMapping("/search-product")
+    public HttpEntity<?> search(@RequestParam String text,@RequestParam String categoryId) {
+        ApiResponse search = service.search(text,categoryId);
+        return ResponseEntity.status(search.isSuccess() ? 201 : 409).body(search);
+    }
+
+
 //    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
 //    public ResponseEntity<?> saveProduct(@RequestPart("image") MultipartHttpServletRequest request, @RequestPart("product") ProductCreateDto productCreateDto) {
 //        String url ;
