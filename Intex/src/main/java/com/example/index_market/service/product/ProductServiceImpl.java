@@ -1,9 +1,6 @@
 package com.example.index_market.service.product;
 
-import com.example.index_market.dto.product.ProductCreateDto;
-import com.example.index_market.dto.product.ProductDtoAdmin;
-import com.example.index_market.dto.product.ProductDtoUser;
-import com.example.index_market.dto.product.ProductUpdateDto;
+import com.example.index_market.dto.product.*;
 import com.example.index_market.entity.product.Category;
 import com.example.index_market.entity.product.Detail;
 import com.example.index_market.entity.product.Product;
@@ -125,8 +122,16 @@ public class ProductServiceImpl extends AbstractService<ProductRepository, Produ
     @Override
     public ApiResponse getAllForUser() {
         List<Product> allProducts = repository.findAll();
-        List<ProductDtoUser> productDtoList =mapper.toDtoForUser(allProducts);
+        List<ProductDtoUser> productDtoList = mapper.toDtoForUser(allProducts);
         return new ApiResponse(true, "Success", productDtoList);
     }
 
+    public ApiResponse search(String text, String categoryId) {
+        List<Product> products = repository.findProduct(text, categoryId);
+        List<ProductDtoUser> list = mapper.toDtoForUser(products);
+        if (products.isEmpty()) {
+            return new ApiResponse(true, "Sorry,We have not this product,try again");
+        }
+        return new ApiResponse(true, list);
+    }
 }
