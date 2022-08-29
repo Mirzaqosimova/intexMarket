@@ -4,7 +4,7 @@ import com.example.index_market.dto.product.*;
 import com.example.index_market.entity.product.Category;
 import com.example.index_market.entity.product.Detail;
 import com.example.index_market.entity.product.Product;
-import com.example.index_market.enums.product.Status;
+import com.example.index_market.type.product.Status;
 import com.example.index_market.mapper.product.ProductMapImpl;
 import com.example.index_market.repository.category.CategoryRepository;
 import com.example.index_market.repository.detail.DetailRepository;
@@ -12,6 +12,7 @@ import com.example.index_market.repository.product.ProductRepository;
 import com.example.index_market.response.ApiResponse;
 import com.example.index_market.service.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -21,6 +22,7 @@ import java.util.Optional;
 
 @Service
 public class ProductServiceImpl extends AbstractService<ProductRepository, ProductMapImpl> implements ProductService {
+
 
     private final CategoryRepository categoryRepo;
 

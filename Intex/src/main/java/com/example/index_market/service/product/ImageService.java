@@ -24,7 +24,7 @@ public class ImageService {
         String name = UUID.randomUUID() + "." + split[split.length - 1];
         Path path = Paths.get(uploadedFiles + name);
         Files.copy(file.getInputStream(), path);
-        imageUrl = path.toString();
+        imageUrl = path.getFileName().toString();
 
         return imageUrl;
     }
