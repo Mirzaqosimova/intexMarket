@@ -1,16 +1,13 @@
 package com.example.index_market.service.order;
 
+import com.example.index_market.bot.service.AdminService;
 import com.example.index_market.dto.order.OrderCreateDto;
 import com.example.index_market.dto.order.OrderDto;
 import com.example.index_market.dto.order.OrderUpdateDto;
-import com.example.index_market.dto.product.ProductDtoUser;
 import com.example.index_market.entity.address.Address;
-import com.example.index_market.entity.auth.AuthUser;
+import com.example.index_market.entity.user.AuthUser;
 import com.example.index_market.entity.order.Order;
-import com.example.index_market.entity.product.Category;
-import com.example.index_market.entity.product.Detail;
 import com.example.index_market.entity.product.Product;
-import com.example.index_market.enums.product.Status;
 import com.example.index_market.mapper.order.OrderMapImpl;
 import com.example.index_market.repository.address.AddressRepository;
 import com.example.index_market.repository.order.OrderRepository;
@@ -23,8 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -35,15 +30,17 @@ public class OrderServiceImpl extends AbstractService<OrderRepository, OrderMapI
     private final ProductRepository productRepo;
     private final AddressRepository addressRepo;
     private final NotificationService notificationService;
+    private final AdminService adminService;
 
 
     @Autowired
-    public OrderServiceImpl(OrderRepository repository, NotificationService notificationService, OrderMapImpl mapper, UserRepository userRepository, ProductRepository productRepository, AddressRepository addressRepository) {
+    public OrderServiceImpl(OrderRepository repository, NotificationService notificationService, OrderMapImpl mapper, UserRepository userRepository, ProductRepository productRepository, AddressRepository addressRepository, AdminService adminService) {
         super(repository, mapper);
         userRepo = userRepository;
         productRepo = productRepository;
         addressRepo = addressRepository;
         this.notificationService = notificationService;
+        this.adminService = adminService;
     }
 
     @Override
@@ -64,8 +61,10 @@ public class OrderServiceImpl extends AbstractService<OrderRepository, OrderMapI
 
         address = addressRepo.save(address);
         Order order = mapper.fromCreateDtoToOrder(createDto, user.get(), product.get(), address);
+        adminService.sentOrderToAdmin(order);
+
         OrderDto orderDto = mapper.toDto(repository.save(order));
-        notificationService.sendNotification(orderDto, true);
+//        notificationService.sendNotification(orderDto, true);
         return new ApiResponse(true, "Successfully created!!!");
 
     }

@@ -8,9 +8,11 @@ import com.example.index_market.repository.consult.ConsultationRepo;
 import com.example.index_market.response.ApiResponse;
 import com.example.index_market.service.AbstractService;
 import com.example.index_market.service.notification.NotificationService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ConsultationServiceImpl extends AbstractService<ConsultationRepo, ConsultationMapImpl> implements ConsultaionService{
 
     private final NotificationService notificationService;
@@ -24,7 +26,7 @@ public class ConsultationServiceImpl extends AbstractService<ConsultationRepo, C
     public ApiResponse create(ConsultationCreateDto createDto) {
         Consultant consultant = mapper.fromCreateDto(createDto);
         notificationService.sendNotification(consultant,false);
-        return null;
+        return new ApiResponse(true,"Successfully saved");
     }
 
     @Override

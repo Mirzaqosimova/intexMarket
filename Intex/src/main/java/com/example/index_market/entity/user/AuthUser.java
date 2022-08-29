@@ -1,14 +1,11 @@
-package com.example.index_market.entity.auth;
+package com.example.index_market.entity.user;
 
 import com.example.index_market.entity.Auditable;
-import com.example.index_market.entity.address.Address;
-import com.example.index_market.enums.user.Role;
+import com.example.index_market.bot.utils.BotStatus;
+import com.example.index_market.type.user.Role;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 
 @Builder
@@ -21,7 +18,6 @@ public class AuthUser extends Auditable {
 
     private String name;
 
-    @Column(nullable = false,unique = true)
     private String phone;
 
     private String password;

@@ -2,7 +2,7 @@ package com.example.index_market.entity.order;
 
 import com.example.index_market.entity.Auditable;
 import com.example.index_market.entity.address.Address;
-import com.example.index_market.entity.auth.AuthUser;
+import com.example.index_market.entity.user.AuthUser;
 import com.example.index_market.entity.product.Product;
 import lombok.*;
 

@@ -1,7 +1,7 @@
 package com.example.index_market.entity.product;
 
 import com.example.index_market.entity.Auditable;
-import com.example.index_market.enums.product.Status;
+import com.example.index_market.type.product.Status;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,14 +26,14 @@ public class Product extends Auditable {
     private Category category;
     @Enumerated(EnumType.STRING)
     private Status status;
-    private String imageUrl;
+    private String fileName;
 
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Detail> detailList;
 
     public Product(String id, Integer count, Double price, String description, Double disPrice,
                    String size, Double height, String frameUz, String frameRu, Category category,
-                   Status status, String imageUrl, List<Detail> detailList) {
+                   Status status, String fileName, List<Detail> detailList) {
         super(id);
         this.count = count;
         this.price = price;
@@ -45,7 +45,7 @@ public class Product extends Auditable {
         this.frameRu = frameRu;
         this.category = category;
         this.status = status;
-        this.imageUrl = imageUrl;
+        this.fileName = fileName;
         this.detailList = detailList;
     }
 }
