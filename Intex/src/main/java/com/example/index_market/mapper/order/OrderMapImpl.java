@@ -4,25 +4,15 @@ package com.example.index_market.mapper.order;
 import com.example.index_market.dto.order.OrderCreateDto;
 import com.example.index_market.dto.order.OrderDto;
 import com.example.index_market.dto.order.OrderUpdateDto;
-import com.example.index_market.dto.product.ProductCreateDto;
-import com.example.index_market.dto.product.ProductDtoAdmin;
-import com.example.index_market.dto.product.ProductDtoUser;
-import com.example.index_market.dto.product.ProductUpdateDto;
 import com.example.index_market.entity.address.Address;
-import com.example.index_market.entity.auth.AuthUser;
+import com.example.index_market.entity.user.AuthUser;
 import com.example.index_market.entity.order.Order;
-import com.example.index_market.entity.product.Category;
-import com.example.index_market.entity.product.Detail;
 import com.example.index_market.entity.product.Product;
-import com.example.index_market.enums.product.Status;
 import com.example.index_market.mapper.BaseMapper;
-import com.example.index_market.mapper.product.ProductMapImpl;
-import com.example.index_market.mapper.user.AuthUserMapImpl;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,7 +23,8 @@ public class OrderMapImpl implements BaseMapper<Order,
         OrderCreateDto,
         OrderUpdateDto> {
 
-
+    @Value(value = "${image.folder.path}")
+    private String uploadedFiles;
 
     @Override
     public OrderDto toDto(Order order) {
@@ -41,7 +32,7 @@ public class OrderMapImpl implements BaseMapper<Order,
         return OrderDto.builder()
                 .userName(order.getUser().getName())
                 .userPhone(order.getUser().getPhone())
-                .productImageUrl(order.getProduct().getImageUrl())
+                .productImageUrl(uploadedFiles+order.getProduct().getFileName())
                 .productHeight(order.getProduct().getHeight())
                 .productSize(order.getProduct().getSize())
                 .productDisPrice(order.getProduct().getDisPrice())

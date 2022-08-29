@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableConfigurationProperties({
@@ -13,6 +14,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
         ServerProperties.class
 })
 @OpenAPIDefinition
+@EnableFeignClients
 public class IndexMarketApplication {
 
     public static void main(String[] args) {

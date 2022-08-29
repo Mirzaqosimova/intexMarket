@@ -1,6 +1,5 @@
 package com.example.index_market.mapper.product;
 
-import com.example.index_market.dto.order.OrderDto;
 import com.example.index_market.dto.product.ProductCreateDto;
 import com.example.index_market.dto.product.ProductDto;
 import com.example.index_market.dto.product.ProductDtoAdmin;
@@ -9,10 +8,10 @@ import com.example.index_market.dto.product.ProductUpdateDto;
 import com.example.index_market.entity.product.Category;
 import com.example.index_market.entity.product.Detail;
 import com.example.index_market.entity.product.Product;
-import com.example.index_market.enums.product.Status;
+import com.example.index_market.type.product.Status;
 import com.example.index_market.mapper.BaseMapper;
-import com.example.index_market.mapper.user.AuthUserMapImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -24,6 +23,8 @@ public class ProductMapImpl implements BaseMapper<Product,
         ProductCreateDto,
         ProductUpdateDto> {
 
+    @Value(value = "${image.folder.path}")
+    private String uploadedFiles;
 
 
     public Product fromCreateDtoToProduct(ProductCreateDto productCreateDto,
@@ -75,7 +76,7 @@ public class ProductMapImpl implements BaseMapper<Product,
         List<ProductDtoAdmin> productDtoAdminList = new ArrayList<>();
         for (Product product : productList) {
             ProductDtoAdmin productDtoAdmin = new ProductDtoAdmin(
-                    product.getImageUrl(),
+                    uploadedFiles+product.getFileName(),
                     product.getCategory().getNameUz(),
                     product.getCategory().getNameRu(),
                     product.getCount(),
@@ -100,7 +101,7 @@ public class ProductMapImpl implements BaseMapper<Product,
             ProductDtoUser productDtoUser=new ProductDtoUser(
                     product.getStatus().name(),
                     product.getFrameUz(),
-                    product.getImageUrl(),
+                   uploadedFiles+ product.getFileName(),
                     product.getHeight(),
                     product.getSize(),
                     product.getPrice(),

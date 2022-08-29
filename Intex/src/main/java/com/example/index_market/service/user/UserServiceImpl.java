@@ -1,18 +1,15 @@
 package com.example.index_market.service.user;
 
 import com.example.index_market.dto.user.AuthUserCreateDto;
-import com.example.index_market.dto.user.AuthUserDto;
 import com.example.index_market.dto.user.AuthUserUpdateDto;
 import com.example.index_market.dto.user.SingInDto;
 import com.example.index_market.entity.Auditable;
-import com.example.index_market.entity.auth.AuthUser;
-import com.example.index_market.entity.product.Detail;
-import com.example.index_market.enums.user.Role;
+import com.example.index_market.entity.user.AuthUser;
+import com.example.index_market.type.user.Role;
 import com.example.index_market.mapper.user.AuthUserMapImpl;
 import com.example.index_market.repository.user.UserRepository;
 import com.example.index_market.response.ApiResponse;
 import com.example.index_market.service.AbstractService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
